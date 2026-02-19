@@ -11,11 +11,7 @@ const Payment = require("../model/payment");
 
 // post create
 
-route.get("/home", (req, res) => {
-  res.status(200).json({
-    message: "hello",
-  });
-});
+
 
 route.post("/user-reg", async (req, res) => {
   try {
