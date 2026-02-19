@@ -16,23 +16,14 @@ app.use(cookieParser());
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true
 // }));
-const allowedOrigins = [
-  "http://localhost:3000", // local dev
-  "https://e-commerce-client-weld.vercel.app" // deployed frontend
-];
-
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin) return callback(null, true); // allow requests like Postman
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = "CORS policy does not allow this origin.";
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
+ app.use(cors({
+  origin: ["http://localhost:5173", "https://e-commerce-client-weld.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+
+ 
 
 
 app.get("/", (req, res) => {
@@ -49,4 +40,5 @@ connect().then(() => {
     console.log(`server are connecct successful on this ${PORT} post`);
   });
 });
+
 
