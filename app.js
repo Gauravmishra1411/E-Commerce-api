@@ -10,7 +10,12 @@ const cookieParser = require("cookie-parser");
 app.use(express.json());
 
 app.use(cookieParser());
-app.use(cors());
+
+app.use(cors({
+  origin: "https://e-commerce-client-weld.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.get("/", (req, res) => {
   res.status(200).json({
